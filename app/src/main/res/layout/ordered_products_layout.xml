@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="80dp"
+    android:layout_height="150dp">
+
+    <ImageView
+        android:padding="10dp"
+        android:id="@+id/image"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/placeholder" />
+
+    <TextView
+        android:layout_below="@id/image"
+        android:textSize="12sp"
+        android:id="@+id/title"
+        android:lines="1"
+        android:ellipsize="end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+
+        android:hint="sdfdsfsdfs"
+        android:textColor="#000" />
+
+    <TextView
+        android:textSize="12sp"
+
+        android:id="@+id/subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_marginLeft="10dp"
+
+        android:layout_marginTop="3dp"
+        android:hint="sdfdsfsdfs"
+        android:textColor="#000" />
+
+    <TextView
+        android:id="@+id/price"
+        android:textSize="12sp"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/subtitle"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="3dp"
+        android:hint="sdfdsfsdfs"
+        android:textColor="#000" />
+
+    <TextView
+        android:id="@+id/quantity"
+        android:textSize="12sp"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/price"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="3dp"
+        android:hint="sdfdsfsdfs"
+        android:textColor="#000" />
+
+
+</RelativeLayout>

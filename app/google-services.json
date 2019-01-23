@@ -1,0 +1,107 @@
+{
+  "project_info": {
+    "project_number": "194259766458",
+    "firebase_url": "https://goshop-baaaa.firebaseio.com",
+    "project_id": "goshop-baaaa",
+    "storage_bucket": "goshop-baaaa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:194259766458:android:5433f98ca4d20cad",
+        "android_client_info": {
+          "package_name": "com.clicknshop.goshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "194259766458-qcsegsb37birr9svv4v5t4an75h8jio9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.clicknshop.goshop",
+            "certificate_hash": "57fa7d12125ee6929a21ec78ba3c31e11533ee99"
+          }
+        },
+        {
+          "client_id": "194259766458-f49lep5nelb8kc8lg89i8s13jukc1k6i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.clicknshop.goshop",
+            "certificate_hash": "a6d9894529462885c64bb89219c4ce8bf44315d7"
+          }
+        },
+        {
+          "client_id": "194259766458-29g83lv1lcheimevnu6kuine24o45m3g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRqsBNFosj9Neh-2LZ330QBcjbXEhbvcc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "194259766458-29g83lv1lcheimevnu6kuine24o45m3g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:194259766458:android:b8dc29c6c29625da",
+        "android_client_info": {
+          "package_name": "com.clicknshop.goshopadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "194259766458-d5277abeernv7hd693drktggq9jtnig8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.clicknshop.goshopadmin",
+            "certificate_hash": "57fa7d12125ee6929a21ec78ba3c31e11533ee99"
+          }
+        },
+        {
+          "client_id": "194259766458-29g83lv1lcheimevnu6kuine24o45m3g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRqsBNFosj9Neh-2LZ330QBcjbXEhbvcc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "194259766458-29g83lv1lcheimevnu6kuine24o45m3g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

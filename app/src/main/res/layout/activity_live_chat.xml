@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:padding="10dp"
+    tools:context="com.clicknshop.goshop.Activities.LiveChat">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/chats"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/aaaa">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <RelativeLayout
+        android:id="@+id/aaaa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_toLeftOf="@id/send"
+        android:background="@drawable/edit_text_background">
+
+
+        <EditText
+            android:id="@+id/message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+
+            android:layout_centerVertical="true"
+            android:layout_marginRight="55dp"
+            android:background="@null"
+            android:hint="Message"
+            android:inputType="textCapSentences|textMultiLine"
+            android:maxHeight="100dp" />
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="50dp"
+            android:background="#d9d9d9"></View>
+
+        <ImageView
+            android:id="@+id/attach"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="13dp"
+            android:src="@drawable/attachment" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/attachArea"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:layout_above="@id/aaaa"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/left_chat_bg"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/pick"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:padding="13dp"
+            android:src="@drawable/ic_camera" />
+
+        <ImageView
+            android:id="@+id/document"
+
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:padding="13dp"
+            android:src="@drawable/file" />
+    </RelativeLayout>
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="11dp"
+
+        android:layout_marginRight="9dp"
+        android:layout_marginBottom="9dp"
+        app:backgroundTint="@color/colorPrimaryDark"
+        app:fabSize="mini"
+        app:srcCompat="@android:drawable/ic_menu_send" />
+
+
+</RelativeLayout>

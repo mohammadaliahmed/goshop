@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Go Shop</string>
+    <string name="error_gif">x or y bound size should be at least %1$dpx and file size should be no more than %2$sM</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_search_products">SearchProducts</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_sdfsdfsd">Map</string>
+
+    <string name="facebook_app_id">558652551277592</string>
+    <string name="fb_login_protocol_scheme">Map</string>
+
+
+</resources>
