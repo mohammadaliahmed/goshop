@@ -4,7 +4,9 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.LocationManager;
 import android.os.Build;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
@@ -49,7 +51,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        getPermissions();
+        final LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+        if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            CommonUtils.showToast("Please turn on GPS");
+            final Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+            startActivity(intent);
+        } else {
+            getPermissions();
+        }
 
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -125,6 +135,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     private void getPermissions() {
+
+
         int PERMISSION_ALL = 1;
         String[] PERMISSIONS = {
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -206,10 +218,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         };
 
         if (hasPermissions(this, PERMISSIONS)) {
-            Intent intent = new Intent(MapsActivity.this, GPSTrackerActivity.class);
-            startActivityForResult(intent, 1);
-        }
+            final LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
+            if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+//                            CommonUtils.showToast("disabled");
+                final Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                startActivity(intent);
+            } else {
+                Intent intent = new Intent(MapsActivity.this, GPSTrackerActivity.class);
+                startActivityForResult(intent, 1);
+            }
+        }
 
 
         googleMap.setOnCameraIdleListener(new GoogleMap.OnCameraIdleListener() {

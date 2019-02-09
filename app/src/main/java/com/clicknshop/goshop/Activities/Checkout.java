@@ -187,8 +187,10 @@ public class Checkout extends AppCompatActivity implements NotificationObserver 
                     }
                 }
 
+
             }
         });
+
         final String[] items = new String[]{"Today", "Tomorrow"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         spinner1.setAdapter(adapter);
@@ -208,20 +210,52 @@ public class Checkout extends AppCompatActivity implements NotificationObserver 
 
     }
 
+    private void setupSpinner1() {
+        final String[] items = new String[]{"Tomorrow"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        spinner1.setAdapter(adapter);
+        spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                daySelected = items[i];
+                setupSpinner2(daySelected);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+
     private void setupSpinner2(String daySelected) {
         long time = System.currentTimeMillis();
+        long tomorrowTime = System.currentTimeMillis()+86400000;
         final String[] items2;
 
         if (daySelected.equalsIgnoreCase("Tomorrow")) {
-            items2 = new String[]{"11:00 - 01:00 PM", "03:00 - 05:00 PM", "05:00 - 07:00 PM", "07:00 - 09:00 PM"};
-        } else {
-            if (CommonUtils.getDayName(time).equalsIgnoreCase("Sun")) {
-                if (CommonUtils.getHour(time) >= 8 && CommonUtils.getHour(time) <= 10) {
+            int hour=CommonUtils.getHour(tomorrowTime);
+            hour=hour-1;
+            long mil=hour*60*60*1000;
+            tomorrowTime=tomorrowTime-mil;
+
+
+//            items2 = new String[]{"11:00 - 01:00 PM", "03:00 - 05:00 PM", "05:00 - 07:00 PM", "07:00 - 09:00 PM"};
+            if (CommonUtils.getDayName(tomorrowTime).equalsIgnoreCase("Sat")) {
+                if (CommonUtils.getHour(tomorrowTime) >= 4 && CommonUtils.getHour(tomorrowTime) <= 10) {
                     items2 = new String[]{"11:00 - 01:00 PM", "03:00 - 05:00 PM"};
-                } else if (CommonUtils.getHour(time) >= 10 && CommonUtils.getHour(time) <= 14) {
+                } else if (CommonUtils.getHour(tomorrowTime) >= 10 && CommonUtils.getHour(tomorrowTime) <= 14) {
                     items2 = new String[]{"03:00 - 05:00 PM"};
                 } else {
                     items2 = new String[]{""};
+                    setupSpinner1();
+                }
+            } else if (CommonUtils.getDayName(tomorrowTime).equalsIgnoreCase("Sun")) {
+                if (CommonUtils.getHour(tomorrowTime) >= 1 && CommonUtils.getHour(tomorrowTime) <= 12) {
+                    items2 = new String[]{"11:00 - 01:00 PM"};
+                } else {
+                    items2 = new String[]{""};
+                    setupSpinner1();
                 }
             } else {
                 if (CommonUtils.getHour(time) >= 8 && CommonUtils.getHour(time) <= 10) {
@@ -234,6 +268,39 @@ public class Checkout extends AppCompatActivity implements NotificationObserver 
                     items2 = new String[]{"07:00 - 09:00 PM"};
                 } else {
                     items2 = new String[]{""};
+                    setupSpinner1();
+                }
+
+            }
+        } else {
+            if (CommonUtils.getDayName(time).equalsIgnoreCase("Sat")) {
+                if (CommonUtils.getHour(time) >= 4 && CommonUtils.getHour(time) <= 10) {
+                    items2 = new String[]{"11:00 - 01:00 PM", "03:00 - 05:00 PM"};
+                } else if (CommonUtils.getHour(time) >= 10 && CommonUtils.getHour(time) <= 14) {
+                    items2 = new String[]{"03:00 - 05:00 PM"};
+                } else {
+                    items2 = new String[]{""};
+                    setupSpinner1();
+                }
+            } else if (CommonUtils.getDayName(time).equalsIgnoreCase("Sun")) {
+                if (CommonUtils.getHour(time) >= 1 && CommonUtils.getHour(time) <= 12) {
+                    items2 = new String[]{"11:00 - 01:00 PM"};
+                } else {
+                    items2 = new String[]{""};
+                    setupSpinner1();
+                }
+            } else {
+                if (CommonUtils.getHour(time) >= 8 && CommonUtils.getHour(time) <= 10) {
+                    items2 = new String[]{"11:00 - 01:00 PM", "03:00 - 05:00 PM", "05:00 - 07:00 PM", "07:00 - 09:00 PM"};
+                } else if (CommonUtils.getHour(time) >= 10 && CommonUtils.getHour(time) <= 14) {
+                    items2 = new String[]{"03:00 - 05:00 PM", "05:00 - 07:00 PM", "07:00 - 09:00 PM"};
+                } else if (CommonUtils.getHour(time) >= 14 && CommonUtils.getHour(time) <= 16) {
+                    items2 = new String[]{"05:00 - 07:00 PM", "07:00 - 09:00 PM"};
+                } else if (CommonUtils.getHour(time) >= 16 && CommonUtils.getHour(time) <= 18) {
+                    items2 = new String[]{"07:00 - 09:00 PM"};
+                } else {
+                    items2 = new String[]{""};
+                    setupSpinner1();
                 }
 
             }
@@ -304,7 +371,7 @@ public class Checkout extends AppCompatActivity implements NotificationObserver 
                     viewPager.setCurrentItem(currentPic);
                     currentPic++;
                 }
-                MainActivity.currentPic=currentPic;
+                MainActivity.currentPic = currentPic;
                 new Handler().postDelayed(this, 2000);
             }
         }, 2000); // Millisecond 1000 = 1 sec
