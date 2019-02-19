@@ -230,14 +230,15 @@ public class Checkout extends AppCompatActivity implements NotificationObserver 
 
     private void setupSpinner2(String daySelected) {
         long time = System.currentTimeMillis();
-        long tomorrowTime = System.currentTimeMillis()+86400000;
         final String[] items2;
 
         if (daySelected.equalsIgnoreCase("Tomorrow")) {
-            int hour=CommonUtils.getHour(tomorrowTime);
-            hour=hour-1;
-            long mil=hour*60*60*1000;
-            tomorrowTime=tomorrowTime-mil;
+            long tomorrowTime = System.currentTimeMillis() + 86400000;
+
+            int hour = CommonUtils.getHour(tomorrowTime);
+            hour = hour - 1;
+            long mil = hour * 60 * 60 * 1000;
+            tomorrowTime = tomorrowTime - mil;
 
 
 //            items2 = new String[]{"11:00 - 01:00 PM", "03:00 - 05:00 PM", "05:00 - 07:00 PM", "07:00 - 09:00 PM"};
@@ -258,13 +259,13 @@ public class Checkout extends AppCompatActivity implements NotificationObserver 
                     setupSpinner1();
                 }
             } else {
-                if (CommonUtils.getHour(time) >= 8 && CommonUtils.getHour(time) <= 10) {
+                if (CommonUtils.getHour(tomorrowTime) >0 && CommonUtils.getHour(tomorrowTime) <= 10) {
                     items2 = new String[]{"11:00 - 01:00 PM", "03:00 - 05:00 PM", "05:00 - 07:00 PM", "07:00 - 09:00 PM"};
-                } else if (CommonUtils.getHour(time) >= 10 && CommonUtils.getHour(time) <= 14) {
+                } else if (CommonUtils.getHour(tomorrowTime) >= 10 && CommonUtils.getHour(tomorrowTime) <= 14) {
                     items2 = new String[]{"03:00 - 05:00 PM", "05:00 - 07:00 PM", "07:00 - 09:00 PM"};
-                } else if (CommonUtils.getHour(time) >= 14 && CommonUtils.getHour(time) <= 16) {
+                } else if (CommonUtils.getHour(tomorrowTime) >= 14 && CommonUtils.getHour(tomorrowTime) <= 16) {
                     items2 = new String[]{"05:00 - 07:00 PM", "07:00 - 09:00 PM"};
-                } else if (CommonUtils.getHour(time) >= 16 && CommonUtils.getHour(time) <= 18) {
+                } else if (CommonUtils.getHour(tomorrowTime) >= 16 && CommonUtils.getHour(tomorrowTime) <= 18) {
                     items2 = new String[]{"07:00 - 09:00 PM"};
                 } else {
                     items2 = new String[]{""};
