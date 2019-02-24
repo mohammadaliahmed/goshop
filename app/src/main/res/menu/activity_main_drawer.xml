@@ -17,6 +17,10 @@
             android:icon="@drawable/chat"
             android:title="Live Chat" />
         <item
+            android:id="@+id/notification"
+            android:icon="@drawable/notification"
+            android:title="Notifications" />
+        <item
             android:id="@+id/callus"
             android:icon="@drawable/phone_call"
             android:title="Call Us" />
@@ -33,7 +37,6 @@
             android:icon="@drawable/power"
             android:title="Sign Out" />
     </group>
-
 
 
 </menu>

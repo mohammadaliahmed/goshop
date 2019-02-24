@@ -13,6 +13,8 @@ import android.util.Log;
 import com.clicknshop.goshop.Activities.LiveChat;
 import com.clicknshop.goshop.Activities.MainActivity;
 import com.clicknshop.goshop.Activities.MyOrders;
+import com.clicknshop.goshop.Activities.ProductsFromThatBrand;
+import com.clicknshop.goshop.Activities.ViewProduct;
 import com.clicknshop.goshop.R;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -29,6 +31,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     public static final String NOTIFICATION_CHANNEL_ID = "10001";
     private NotificationManager mNotificationManager;
     private NotificationCompat.Builder mBuilder;
+    private String Id;
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -45,6 +48,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             message = map.get("Message");
             title = map.get("Title");
             type = map.get("Type");
+            Id = map.get("Id");
             handleNow(title, message, type);
             if (/* Check if data needs to be processed by long running job */ true) {
                 // For long-running tasks (10 seconds or more) use Firebase Job Dispatcher.
@@ -66,12 +70,18 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         int num = (int) System.currentTimeMillis();
         /**Creates an explicit intent for an Activity in your app**/
-        Intent resultIntent=null;
-        if(type.equalsIgnoreCase("chat")){
+        Intent resultIntent = null;
+        if (type.equalsIgnoreCase("chat")) {
             resultIntent = new Intent(this, LiveChat.class);
-        }else if(type.equalsIgnoreCase("marketing")){
+        } else if (type.equalsIgnoreCase("marketing")) {
             resultIntent = new Intent(this, MainActivity.class);
-        }else if(type.equalsIgnoreCase("order")){
+        } else if (type.equalsIgnoreCase("brand")) {
+            resultIntent = new Intent(this, ProductsFromThatBrand.class);
+            resultIntent.putExtra("brand", Id);
+        } else if (type.equalsIgnoreCase("product")) {
+            resultIntent = new Intent(this, ViewProduct.class);
+            resultIntent.putExtra("productId", Id);
+        } else if (type.equalsIgnoreCase("order")) {
             resultIntent = new Intent(this, MyOrders.class);
         }
 

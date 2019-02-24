@@ -712,6 +712,19 @@ public class MainActivity extends AppCompatActivity
             }
 
 
+        } else if (id == R.id.notification) {
+            if (SharedPrefs.getIsLoggedIn().equals("yes")) {
+                Intent i = new Intent(MainActivity.this, NotificationHistory.class);
+//                i.putExtra("takeUserToActivity", Constants.LIVE_CHAT);
+
+                startActivity(i);
+            } else {
+                Intent i = new Intent(MainActivity.this, Login.class);
+
+                startActivity(i);
+            }
+
+
         } else if (id == R.id.callus) {
 
 

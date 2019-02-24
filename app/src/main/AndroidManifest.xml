@@ -99,8 +99,10 @@
         <activity android:name=".Activities.ViewInvoice" />
         <activity android:name=".Activities.PhoneVerification" />
         <activity android:name=".Activities.ProductsFromThatBrand" />
-        <activity android:name=".Activities.ViewPictures"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Activities.ViewPictures"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activities.NotificationHistory"></activity>
     </application>
 
 </manifest>
