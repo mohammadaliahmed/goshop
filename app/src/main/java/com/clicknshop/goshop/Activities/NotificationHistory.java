@@ -48,10 +48,11 @@ public class NotificationHistory extends AppCompatActivity {
     }
 
     private void getDataFromDB() {
-        mDatabase.child("CustomerNotifications").addListenerForSingleValueEvent(new ValueEventListener() {
+        mDatabase.child("CustomerNotifications").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.getValue() != null) {
+                    itemList.clear();
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         CustomerNotificationModel model = snapshot.getValue(CustomerNotificationModel.class);
                         if (model != null) {

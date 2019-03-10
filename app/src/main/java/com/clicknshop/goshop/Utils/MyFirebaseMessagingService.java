@@ -74,7 +74,11 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         if (type.equalsIgnoreCase("chat")) {
             resultIntent = new Intent(this, LiveChat.class);
         } else if (type.equalsIgnoreCase("marketing")) {
+
             resultIntent = new Intent(this, MainActivity.class);
+            resultIntent.putExtra("title",title);
+            resultIntent.putExtra("message",message);
+            resultIntent.putExtra("alert","alert");
         } else if (type.equalsIgnoreCase("brand")) {
             resultIntent = new Intent(this, ProductsFromThatBrand.class);
             resultIntent.putExtra("brand", Id);

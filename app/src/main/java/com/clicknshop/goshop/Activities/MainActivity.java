@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -100,6 +101,15 @@ public class MainActivity extends AppCompatActivity
         initNewRecycler();
         getLatestProductsFromDB();
         sendFcmKeyToServer();
+        if (getIntent().getStringExtra("alert") != null) {
+
+            if (getIntent().getStringExtra("alert").equalsIgnoreCase("alert")) {
+
+                showAlert();
+            } else {
+
+            }
+        }
 
 //        initGrocery();
 //        initDairy();
@@ -111,6 +121,19 @@ public class MainActivity extends AppCompatActivity
 
         initDrawer();
         getAdminDataFromDB();
+    }
+
+    private void showAlert() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle(getIntent().getStringExtra("title"));
+        builder.setMessage(getIntent().getStringExtra("message"));
+
+        // add the buttons
+        builder.setPositiveButton("Ok", null);
+
+        // create and show the alert dialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
 

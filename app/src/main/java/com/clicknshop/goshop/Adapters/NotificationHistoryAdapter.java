@@ -1,8 +1,10 @@
 package com.clicknshop.goshop.Adapters;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import com.clicknshop.goshop.Activities.ProductsFromThatBrand;
 import com.clicknshop.goshop.Activities.ViewProduct;
 import com.clicknshop.goshop.Models.CustomerNotificationModel;
 import com.clicknshop.goshop.R;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.util.ArrayList;
 
@@ -45,17 +48,33 @@ public class NotificationHistoryAdapter extends RecyclerView.Adapter<Notificatio
             public void onClick(View view) {
                 Intent resultIntent = null;
                 if (model.getType().equalsIgnoreCase("marketing")) {
-                    resultIntent = new Intent(context, MainActivity.class);
+                    showAlert(model);
                 } else if (model.getType().equalsIgnoreCase("brand")) {
                     resultIntent = new Intent(context, ProductsFromThatBrand.class);
                     resultIntent.putExtra("brand", model.getId());
+                    context.startActivity(resultIntent);
+
                 } else if (model.getType().equalsIgnoreCase("product")) {
                     resultIntent = new Intent(context, ViewProduct.class);
                     resultIntent.putExtra("productId", model.getId());
+                    context.startActivity(resultIntent);
+
                 }
-                context.startActivity(resultIntent);
             }
         });
+    }
+
+    private void showAlert(CustomerNotificationModel model) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(model.getTitle());
+        builder.setMessage(model.getMessage());
+
+        // add the buttons
+        builder.setPositiveButton("Ok", null);
+
+        // create and show the alert dialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     @Override
