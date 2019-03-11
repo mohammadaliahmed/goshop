@@ -243,7 +243,7 @@ public class Checkout extends AppCompatActivity implements NotificationObserver 
 
 //            items2 = new String[]{"11:00 - 01:00 PM", "03:00 - 05:00 PM", "05:00 - 07:00 PM", "07:00 - 09:00 PM"};
             if (CommonUtils.getDayName(tomorrowTime).equalsIgnoreCase("Sat")) {
-                if (CommonUtils.getHour(tomorrowTime) >= 4 && CommonUtils.getHour(tomorrowTime) <= 10) {
+                if (CommonUtils.getHour(tomorrowTime) >= 1 && CommonUtils.getHour(tomorrowTime) <= 10) {
                     items2 = new String[]{"11:00 - 01:00 PM", "03:00 - 05:00 PM"};
                 } else if (CommonUtils.getHour(tomorrowTime) >= 10 && CommonUtils.getHour(tomorrowTime) <= 14) {
                     items2 = new String[]{"03:00 - 05:00 PM"};
